@@ -1,0 +1,55 @@
+header.topo{
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 15px;
+}
+
+.primeira_cor{
+    color: rgb(63, 0, 113);
+}
+
+.segunda_cor{
+    color: #96ac60;
+}
+
+div.row{
+    margin-top: 30px;   
+}
+
+#primeira_parte{
+    text-align: center;
+}
+
+#segunda_parte{
+    text-align: center;
+}
+
+.h5{
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 15px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    padding: 30px, 15px;
+    background: #a5a5a5;
+}
+
+a:link, a:visited, a:active{
+    text-decoration: none;
+    color: black;
+    ;
+}
+
+a:hover{
+    background: rgb(63, 0, 113);
+    color: white;
+}
+
+input{
+    border-radius: 1rem !important;
+}
+
