@@ -65,7 +65,7 @@
                 <div class="col">
                     <label for="operacao" class="form-label">Operação: </label>
                     <select name="operacao" id="operacao" class="form-control rounded-pill" onchange="teste()" required>
-                        <option value="">Selecione uma operação</option>
+                        <option value="">Selecione uma operação:</option>
                         <option value="usi">Usinagem</option>
                         <option value="reb">Rebarbar</option>
                         <option value="lav">Lavagem</option>

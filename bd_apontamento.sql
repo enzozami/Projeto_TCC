@@ -19,106 +19,63 @@ drop database banco_apontamento;
 
 
 /*TABELAS*/
-
-/* TABELA - CODIGOS*/
-CREATE TABLE cod(
-	codigo INT PRIMARY KEY 
-);
-
-/* TABELA - OPERAÇÕES */
-CREATE TABLE operacao(
-    tipo_op VARCHAR(25) PRIMARY KEY 
-);
-
-/* TABELA - MAQUINAS */
-CREATE TABLE maquina(
-	nome_maquina VARCHAR(25) PRIMARY KEY ,
-    tipo_de_maquina VARCHAR(10)
-);
-
 /* TABELA - OPERADORES */
 CREATE TABLE operador(
 	id_operador INT PRIMARY KEY,
-    nome_operador VARCHAR(50) 
+    nome_operador VARCHAR(50)
 );
 
-/* TABELA - TEMPO */
-CREATE TABLE tempoinicio(
-	hinicio TIME PRIMARY KEY 
-);
-
-CREATE TABLE datainicio(
-	dinicio DATE PRIMARY KEY 
-);
-
-CREATE TABLE tempofim(
-	hfim TIME PRIMARY KEY 
-);
-
-CREATE TABLE datafim(
-	dfim DATE PRIMARY KEY 
-);
-
-CREATE TABLE quantidade(
-	quant INT PRIMARY KEY
-);
-
-CREATE TABLE n_operacao(
-	n_op INT PRIMARY KEY NOT NULL,
-    tipo_op VARCHAR(25),
+/* TABELA - MAQUINA */
+CREATE TABLE maquina(
+	nome_maquina VARCHAR(25), 
+    tipo_de_maquina VARCHAR(10),
+    id_operador INT,
     
-    FOREIGN KEY (tipo_op) REFERENCES operacao(tipo_op)
+    FOREIGN KEY (id_operador) REFERENCES operador(id_operador)
+);
+
+/* TABELA - OPERACAO */
+CREATE TABLE operacao(
+	id_operacao TINYINT PRIMARY KEY,
+    nome_operacao VARCHAR(50)
 );
 
 /* TABELA - NUMERO ORDEM */
 CREATE TABLE nop(
 	numero_ordem VARCHAR(12) PRIMARY KEY NOT NULL,
 	codigo INT,
-    n_op INT,
-    tipo_op VARCHAR(25),
-    quant INT,
-        
-    FOREIGN KEY (codigo) REFERENCES cod(codigo),
-    FOREIGN KEY (n_op) REFERENCES n_operacao(n_op),
-    FOREIGN KEY (tipo_op) REFERENCES operacao(tipo_op),
-	FOREIGN KEY (quant) REFERENCES quantidade(quant)
+    quant TINYINT,
+	id_operacao TINYINT,
+
+	FOREIGN KEY (id_operacao) REFERENCES operacao(id_operacao)
+);
+
+/* TABELA - TEMPO */
+CREATE TABLE tempoinicio(
+	hinicio TIME, 
+	dinicio DATE, 
+	hfim TIME,
+    dfim DATE 
 );
 
 
-/* TABELA - NUMERO OPERAÇÕES */
 -- INICIO VALORES
 /*NÚMERO ORDENS*/
-INSERT INTO nop(numero_ordem) VALUES
-('000001SA001'),
-('000002SA001'),
-('000003SA001'),
-('000004SA001');
-
-/*NUMERO CODIGOS*/
-INSERT INTO cod(codigo) VALUES
-(111222333),
-(222333444),
-(333444555),
-(444555666);
+INSERT INTO nop(numero_ordem, codigo, quant) VALUES
+('000001SA001', 111222333, 46),
+('000002SA001', 222333444, 50),
+('000003SA001', 333444555, 100),
+('000004SA001', 444555666, 70);
 
 /*NUMERO OPERAÇÕES*/
-INSERT INTO n_operacao(n_op) VALUES
-(2),
-(3),
-(4),
-(5),
-(6),
-(7),
-(8);
-
-INSERT INTO operacao(tipo_op) VALUES
-('Usinagem'),
-('Rebarbar'),
-('Lavagem'),
-('Polimento'),
-('Inspeção'),
-('Esterilização'),
-('Estoque');
+INSERT INTO operacao(id_operacao, nome_operacao) VALUES
+(2, 'Usinagem'),
+(3, 'Rebarbar'),
+(4, 'Lavagem'),
+(5, 'Polimento'),
+(6, 'Inspeção'),
+(7, 'Esterialização'),
+(8, 'Estoque');
 
 /*MÁQUINAS*/
 INSERT INTO maquina(tipo_de_maquina, nome_maquina) VALUES
@@ -126,14 +83,15 @@ INSERT INTO maquina(tipo_de_maquina, nome_maquina) VALUES
 ('L20_2', 'M-02'),
 ('C13', 'M-03'),
 ('C14', 'M-04'),
-('C15', 'M-05');
+('C15', 'M-05'),
+('ROMI_700', 'M-06'),
+('ROMI_650', 'M-07'),
+('BROTHER', 'M-08')
+;
 
 /*OPERADORES*/
-INSERT INTO operador(nome_operador, id_operador) VALUES
-('Enzo Zamineli', 1),
-('Geraldo', 2),
-('Paulo', 3),
-('Guilherme', 4);
-
-
-
+INSERT INTO operador(id_operador, nome_operador) VALUES
+(1, 'Enzo Zamineli'),
+(2, 'Geraldo'),
+(3, 'Paulo'),
+(4, 'Guilherme');
