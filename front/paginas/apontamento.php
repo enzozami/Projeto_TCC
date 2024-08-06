@@ -12,27 +12,11 @@
 <body style="background-color: #b5b5b5; width: 100%; height: 100%;">
     <div class="container">
         <form action="index.php" method="post">
-            <header class="topo">
-                <h1>
-                    <span class="primeira_cor">O∾L</span><span class="segunda_cor">I</span><span class="primeira_cor">NKe</span> 
-                </h1> <hr> 
-            </header>    
- 
-            <nav class="navegacao">
-                <div class="row" style="text-align: center;">
-                    <div class="col">
-                        <button id="btnApontamento" name="btnApontamento">Apontamento</button>
-                    </div>
-                    <div class="col">
-                        <a href="pesquisa">Pesquisa</a>
-                    </div>
-                    <div class="col">
-                        <a href="opr">Operadores</a> <!--opr = Operadores-->
-                    </div>
-                </div>    
-            </nav>
-
+            
+            <?php include 'template.php' ?>
+            
             <div id="apontamentoForm">
+                <br>
                 <hr>
                     <h6 class="h5">APONTAMENTO</h6>
 
