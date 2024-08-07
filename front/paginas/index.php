@@ -14,7 +14,7 @@
     <div class="container">
         <form action="index.php" method="post">
             <header class="topo d-flex justify-content-center align-items-center mt-1" style="background-color: rgb(63, 0, 113);"> <!-- style="background-color: rgb(63, 0, 113);" -->
-                <h1 class="text-center py-2 px-3" style="background-color: white; ">
+                <h1 class="text-center py-2 px-3 mt-2" style="background-color: white; ">
                     <span class="primeira_cor px-0">O∾L</span><span class="segunda_cor">I</span><span class="primeira_cor">NKe</span> 
                 </h1>    
             </header> <hr>  

@@ -23,18 +23,18 @@
                 <div class="row" id="primeira_parte">
                     <div class="col">
                         <label for="nop" class="form-label">Número Ordem: </label>
-                        <input type="text" id="nop" class="form-control" pattern="^[0-9]{6}[A-Z]{2}[0-9]{3}$" title="Número Ordem" required>
+                        <input type="text" id="nop" name="nop" class="form-control" pattern="^[0-9]{6}[A-Z]{2}[0-9]{3}$" title="Número Ordem" required <?=$_POST['nop'] ?? null ?>>
                         <div id="error-message-nop" style="color: red; display: none">Entrada Inválida.</div>
                     </div>
 
                     <div class="col">
                         <label for="codigo" class="form-label">Código: </label>
-                        <input type="number" step="any" id="codigo" class="form-control">
+                        <input type="number" step="any" id="codigo" name="codigo" class="form-control">
                     </div>
 
                     <div class="col">
                         <label for="quantidade" class="form-label">Quantidade: </label>
-                        <input type="number" step="any" id="quantidade" class="form-control" pattern="^[0-9]{4}$" title="Quantidade" required>
+                        <input type="number" step="any" id="quantidade" class="form-control" pattern="^[0-9]{4}$" title="Quantidade" required <?=$_POST['quantidade'] ?? null ?>>
                         <div id="" style="color: red; display: none;"></div>
                     </div>
 
@@ -43,7 +43,7 @@
                 <div class="row" id="segunda_parte">
                     <div class="col">
                         <label for="operador" class="form-label">Operador: </label>
-                        <input type="number" step="any" id="operador" class="form-control" pattern="^[0-9]{2}$" title="Operador" required>
+                        <input type="number" step="any" id="operador" class="form-control" pattern="^[0-9]{2}$" title="Operador" required <?=$_POST['operador'] ?? null ?>>
                         <div id="error-message-operador" style="color: red; display: none"></div>
                     </div>
 
@@ -72,9 +72,9 @@
                             <option value="torno_C16_2">M-14</option>
                             <option value="torno_C16_3">M-15</option>
                             <option value="centro_torneamento_star">M-05</option>
-                            <option value="centro_usinagem_760"></option>
-                            <option value="centro_usinagem_660"></option>
-                            <option value="brother">Brother</option>
+                            <option value="centro_usinagem_760">M-19</option>
+                            <option value="centro_usinagem_660">M-22</option>
+                            <option value="brother">M-18</option>
                         </select>
                         <div class="error-message-maquina" style="color: red; display: none">Máquina inválida.</div>
                     </div>
