@@ -31,6 +31,7 @@
                     </div>
                 </div>    
             </nav>
+            <hr>
         </form>
     </div>
 </body>
