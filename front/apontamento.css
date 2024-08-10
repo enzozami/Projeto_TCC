@@ -4,11 +4,8 @@ input{
 
 .nav-link{
     color: #fff;
-    text-decoration: none;
-    padding: 20px;
-    transition: background-color 0.3s ease;
 }
 
 .nav-link:hover{
-    background-color: #555;
+    background-color: rgb(63, 0, 113);
 }
