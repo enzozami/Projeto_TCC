@@ -16,12 +16,12 @@
             
             <?php include 'template.php' ?>
             
-            <div id="apontamentoForm">
-                <br>
-                <hr>
-                    <h6 class="h5">APONTAMENTO</h6>
+            <div id="apontamentoForm" class="mt-3">
+                
+                
+                    <h5 class="text-center mx-auto py-3">APONTAMENTO</h5> <!--     text-align: center; margin-top: 25px; padding-top: 15px; -->
 
-                <div class="row" id="primeira_parte">
+                <div class="row mt-4 text-center" id="primeira_parte">
                     <div class="col">
                         <label for="nop" class="form-label">Número Ordem: </label>
                         <input type="text" id="nop" name="nop" class="form-control" pattern="^[0-9]{6}[A-Z]{2}[0-9]{3}$" title="Número Ordem" required value="<?=$_POST['nop'] ?? null ?>">
@@ -41,7 +41,7 @@
 
                 </div>
 
-                <div class="row" id="segunda_parte">
+                <div class="row mt-5 text-center" id="segunda_parte">
                     <div class="col">
                         <label for="operador" class="form-label">Operador: </label>
                         <input type="number" step="any" id="operador" class="form-control" pattern="^[0-9]{2}$" title="Operador" required value="<?=$_POST['operador'] ?? null ?>">

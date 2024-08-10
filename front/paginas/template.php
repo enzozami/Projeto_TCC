@@ -14,24 +14,23 @@
         <form action="index.php" method="post">
             <header class="topo d-flex justify-content-center align-items-center mt-1" style="background-color: rgb(63, 0, 113);"> <!-- style="background-color: rgb(63, 0, 113);" -->
                 <h1 class="text-center py-2 px-3 mt-2" style="background-color: white; ">
-                    <span class="primeira_cor px-0">O∾L</span><span class="segunda_cor">I</span><span class="primeira_cor">NKe</span> 
+                    <span class="primeira_cor px-0" style="color: rgb(63, 0, 113);">O∾L</span><span class="segunda_cor" style="color: #96ac60;">I</span><span class="primeira_cor">NKe</span> 
                 </h1>    
-            </header> <hr>     
+            </header>  
 
-            <nav class="navegacao">
-                <div class="row" style="text-align: center;">
+            <nav class="d-flex justify-content-around mt-3" style="background-color: #333;">
+                <div class="row text-center" id="nav-link">
                     <div class="col">
-                        <button id="btnApontamento" name="btnApontamento" class="rounded-end"><a href="apontamento.php">Apontamento</a></button>
+                        <a href="apontamento.php">Apontamento</a>
                     </div>
                     <div class="col">
-                        <button id="btnPesquisa" name="btnPesquisa" class="rounded"><a href="pesquisa.php">Pesquisa</a></button>
+                        <a href="pesquisa.php">Pesquisa</a>
                     </div>
                     <div class="col">
-                        <button id="btnOperadores" name="btnOperadores" class="rounded-start"><a href="operadores.php">Operadores</a></button> <!--opr = Operadores-->
+                        <a href="operadores.php">Operadores</a> <!--opr = Operadores-->
                     </div>
                 </div>    
             </nav>
-            <hr>
         </form>
     </div>
 </body>
