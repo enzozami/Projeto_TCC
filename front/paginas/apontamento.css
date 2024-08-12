@@ -1,0 +1,31 @@
+input{
+    border-radius: 1rem !important;
+}
+
+.nav-link:hover{
+    background-color: rgb(63, 0, 113);
+}
+
+.icon{
+    position: relative;
+    color: rgb(63, 0, 113);
+}
+
+.icon i{
+    font-size: 48px;
+    transition: transform 0.3s ease;
+}
+
+.icon i:hover{
+    transform: scale(1.2);
+}
+
+.text{
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 22px;
+}
+
+.icon i:hover .text{
+    opacity: 1;
+}
