@@ -16,10 +16,10 @@
             
             <?php include 'template.php' ?>
             
-            <div id="apontamentoForm" class="mt-3">
+            <div id="apontamentoForm" class="mt-0">
                 
                 
-                    <h5 class="text-center mx-auto py-3">APONTAMENTO</h5> <!--     text-align: center; margin-top: 25px; padding-top: 15px; -->
+                    <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff; ">APONTAMENTO</h5> <!--     text-align: center; margin-top: 25px; padding-top: 15px; -->
 
                 <div class="row mt-4 text-center" id="primeira_parte">
                     <div class="col">

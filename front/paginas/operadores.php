@@ -15,12 +15,14 @@
         
             <?php include 'template.php';?>
 
+            <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff;">OPERADORES</h5>
+
             <div class="row">
                 <div class="col">
                     <select name="turnos" id="turnos" class="text-center d-block w-25 h-100 my-1 mx-auto rounded-pill">
                         <option value="">Selecione um Turno</option>
-                        <option value="primeiro_turno" <?= (isset($_POST['$turnos']) && ($_POST['$turnos']) == "primeiro_turno") ? 'selected' : null ?>>1° Turno</option>
-                        <option value="segundo_turno" <?= (isset($_POST['$turnos']) && ($_POST['$turnos']) == "segundo_turno") ? 'selected' : null ?>>2° Turno</option>
+                        <option value="primeiro_turno" <?= (isset($_POST['turnos']) && ($_POST['turnos']) == "primeiro_turno") ? 'selected' : null ?>>1° Turno</option>
+                        <option value="segundo_turno" <?= (isset($_POST['turnos']) && ($_POST['turnos']) == "segundo_turno") ? 'selected' : null ?>>2° Turno</option>
                     </select>
                 </div>
             </div>

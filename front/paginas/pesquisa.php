@@ -15,6 +15,8 @@
             
             <?php include 'template.php';?>
 
+            <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff;">PESQUISA</h5>
+
         </form>
     </div>
 </body>
