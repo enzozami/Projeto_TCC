@@ -1,6 +1,5 @@
 CREATE SCHEMA banco_tcc_apont;
 
-
 USE banco_tcc_apont;
 
 CREATE TABLE operadores(
@@ -53,10 +52,10 @@ INSERT INTO operacao(nome_operacao) VALUES
 ("Polimento");
 
 -- ORDEM (PRINCIPAL)
-INSERT INTO nop(numero_ordem, codigo, quantidade, operacao_id, maquina_id) VALUES
-("004234SA001", 111222333, 200, 1, 1),
-("002234SA001", 111222334, 300, 3, 2),
-("003234SA001", 111222333, 200, 2, 3);
+INSERT INTO nop(numero_ordem, codigo, quantidade, operacao_id, maquina_id, operador_id) VALUES
+("004234SA001", 111222333, 200, 1, 1, 3),
+("002234SA001", 111222334, 300, 3, 2, 2),
+("003234SA001", 111222333, 200, 2, 3, 1);
 
 
 SELECT 
