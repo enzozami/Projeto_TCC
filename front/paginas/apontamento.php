@@ -19,7 +19,7 @@
             <div id="apontamentoForm" class="mt-0">
                 
                 
-                    <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff; ">APONTAMENTO</h5> <!--     text-align: center; margin-top: 25px; padding-top: 15px; -->
+                    <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff; ">APONTAMENTO</h5>
 
                 <div class="row mt-4 text-center" id="primeira_parte">
                     <div class="col">
@@ -81,7 +81,7 @@
                     </div>
                 </div>   
                 <br><br>
-                <button class="btn btn-success my-2 w-25 d-block mx-auto">Salvar</button> 
+                <button name="botao_salvar_apontamento" class="btn btn-success my-2 w-25 d-block mx-auto">Salvar</button> 
                 <!-- <div class="error-message-apontamento" style="color: red; display: none">Apontamento Inválido.</div> -->
             </div>
         </form>
@@ -95,15 +95,15 @@
             $quantidade = filter_input(INPUT_POST, 'quantidade', FILTER_SANITIZE_NUMBER_INT);
 
             if(isset($nop) == false || strlen($nop) == 0){
-                echo"<div class='alert alert-danger'>Forneça o número da ordem corretamente!</div>";
+                echo"<div class='alert alert-danger text-center fx-bold' style='color: black'>Forneça o número da ordem corretamente!</div>";
             } elseif (isset($operacao) == false){
-                echo"<div class='alert alert-danger'>Forneça a operação corretamente!</div>";
+                echo"<div class='alert alert-danger text-center fx-bold' style='color: black'>Forneça a operação corretamente!</div>";
             } elseif(isset($operador) == false || strlen($operador) == 0){
-                echo"<div class='alert alert-danger'>Forneça o operador corretamente!</div>";
+                echo"<div class='alert alert-danger text-center fx-bold' style='color: black'>Forneça o operador corretamente!</div>";
             } elseif(isset($quantidade) == false || strlen($quantidade) == 0){
-                echo"<div class='alert alert-danger'>Forneça a quantidade corretamente!</div>";
+                echo"<div class='alert alert-danger text-center' style='color: black'>Forneça a quantidade corretamente!</div>";
             } else {
-                // aqui vai ocorrer o codigo kkk
+                // aqui vai ocorrer o codigo 
             }
 
         ?>

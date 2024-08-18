@@ -11,7 +11,7 @@
 </head>
 <body style="background-color: #b5b5b5; width: 100%; height: 100%;">
     <div class="container">
-        <form action="index.php" method="post">
+        <form action="" method="post">
         
             <?php include 'template.php';?>
 
@@ -19,30 +19,40 @@
 
             <div class="row">
                 <div class="col">
-                    <select name="turnos" id="turnos" class="text-center d-block w-25 h-100 my-1 mx-auto rounded-pill">
+                    <select name="turnos" class="text-center d-block w-25 h-100 my-1 mx-auto rounded-pill">
                         <option value="">Selecione um Turno</option>
-                        <option value="primeiro_turno" <?= (isset($_POST['turnos']) && ($_POST['turnos']) == "primeiro_turno") ? 'selected' : null ?>>1° Turno</option>
-                        <option value="segundo_turno" <?= (isset($_POST['turnos']) && ($_POST['turnos']) == "segundo_turno") ? 'selected' : null ?>>2° Turno</option>
+                        <option value="primeiro_turno" <?= (isset($_POST['turnos']) && ($_POST['turnos']) == 'primeiro_turno') ? 'selected' : null ?>>1° Turno</option>
+                        <option value="segundo_turno" <?= (isset($_POST['turnos']) && ($_POST['turnos']) == 'segundo_turno') ? 'selected' : null ?>>2° Turno</option>
                     </select>
                 </div>
             </div>
         </form>
             
         <?php 
-            $turnos = filter_input(INPUT_POST, 'turnos', FILTER_SANITIZE_STRING);
+            $turnos = filter_input(INPUT_POST, "turnos", FILTER_SANITIZE_STRING);
 
-            switch($turnos){
-                case "primeiro_turno":
-                    echo"Oi";
-                    break;
-                case "segundo_turno":
-                    echo"Tchau";
-                    break;
-                    default:
-                    echo"Teste falhou";
+            if(isset($turnos) == false || empty($turnos) == false){
+                $alertColor = "danger";
+                $resposta = "Selecione um Turno";
+            } else {
+                switch($turnos){
+                    case "primeiro_turno":
+                        $alertColor = "success";
+                        $resposta = "<div class='text-center'>Primeiro turno selecionado </div>";
+                        break;
+                    case "segundo_turno":
+                        $alertColor = "info";
+                        $resposta = "Tchau";
+                        break;
+                        default:
+                        echo"Teste falhou";
+                }
             }
-           
         ?>
+
+        <div class="mt-3 alert alert-<?=$alertColor?>">
+            <?=$resposta?>
+        </div>
     </div>
 </body>
 </html>
