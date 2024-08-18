@@ -1,97 +1,85 @@
-CREATE DATABASE banco_apontamento;
-
-USE banco_apontamento;
-
-drop database banco_apontamento;
-
-/* ROTEIRO 
-
-1 - sair do almoxarifado
-2 - usinagem
-3 - rebarbar
-4 - lavagem
-5 - polimento
-6 - inspeção
-7 - esterialização
-8 - estoque
-*/
+CREATE SCHEMA banco_tcc_apont;
 
 
+USE banco_tcc_apont;
 
-/*TABELAS*/
-/* TABELA - OPERADORES */
-CREATE TABLE operador(
-	id_operador INT PRIMARY KEY,
-    nome_operador VARCHAR(50)
+CREATE TABLE operadores(
+	id_operador INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nome_operador VARCHAR(50) NOT NULL
 );
 
-/* TABELA - MAQUINA */
 CREATE TABLE maquina(
-	nome_maquina VARCHAR(25), 
-    tipo_de_maquina VARCHAR(10),
-    id_operador INT,
-    
-    FOREIGN KEY (id_operador) REFERENCES operador(id_operador)
+	id_maquina INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nome_maquina VARCHAR(50) NOT NULL
 );
 
-/* TABELA - OPERACAO */
 CREATE TABLE operacao(
-	id_operacao TINYINT PRIMARY KEY,
-    nome_operacao VARCHAR(50)
+	id_operacao INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    nome_operacao VARCHAR(50) NOT NULL	
 );
 
-/* TABELA - NUMERO ORDEM */
 CREATE TABLE nop(
-	numero_ordem VARCHAR(12) PRIMARY KEY NOT NULL,
-	codigo INT,
-    quant TINYINT,
-	id_operacao TINYINT,
-
-	FOREIGN KEY (id_operacao) REFERENCES operacao(id_operacao)
-);
-
-/* TABELA - TEMPO */
-CREATE TABLE tempoinicio(
-	hinicio TIME, 
-	dinicio DATE, 
-	hfim TIME,
-    dfim DATE 
+	numero_ordem VARCHAR(12) PRIMARY KEY, 
+	codigo INT UNSIGNED NOT NULL, 
+	quantidade INT UNSIGNED NOT NULL,
+    operacao_id INT UNSIGNED,
+    maquina_id INT UNSIGNED,
+    operador_id INT UNSIGNED,
+    
+    FOREIGN KEY (maquina_id) REFERENCES maquina(id_maquina),
+    FOREIGN KEY (operacao_id) REFERENCES operacao(id_operacao),
+    FOREIGN KEY (operador_id) REFERENCES operadores(id_operador)
 );
 
 
--- INICIO VALORES
-/*NÚMERO ORDENS*/
-INSERT INTO nop(numero_ordem, codigo, quant) VALUES
-('000001SA001', 111222333, 46),
-('000002SA001', 222333444, 50),
-('000003SA001', 333444555, 100),
-('000004SA001', 444555666, 70);
+-- DADOS
 
-/*NUMERO OPERAÇÕES*/
-INSERT INTO operacao(id_operacao, nome_operacao) VALUES
-(2, 'Usinagem'),
-(3, 'Rebarbar'),
-(4, 'Lavagem'),
-(5, 'Polimento'),
-(6, 'Inspeção'),
-(7, 'Esterialização'),
-(8, 'Estoque');
+-- OPERADORES
+INSERT INTO operadores(nome_operador) VALUES
+("Enzo Zamineli"),
+("Vitor Assalin"),
+("Rodrigo Coelho de Amo");
 
-/*MÁQUINAS*/
-INSERT INTO maquina(tipo_de_maquina, nome_maquina) VALUES
-('L20', 'M-01'),
-('L20_2', 'M-02'),
-('C13', 'M-03'),
-('C14', 'M-04'),
-('C15', 'M-05'),
-('ROMI_700', 'M-06'),
-('ROMI_650', 'M-07'),
-('BROTHER', 'M-08')
-;
+-- MAQUINA
+INSERT INTO maquina(nome_maquina) VALUES
+("L20"),
+("C16"),
+("C15");
 
-/*OPERADORES*/
-INSERT INTO operador(id_operador, nome_operador) VALUES
-(1, 'Enzo Zamineli'),
-(2, 'Geraldo'),
-(3, 'Paulo'),
-(4, 'Guilherme');
+-- OPERACAO
+INSERT INTO operacao(nome_operacao) VALUES
+("Usinagem/Torneamento"),
+("Rebarbar"),
+("Polimento");
+
+-- ORDEM (PRINCIPAL)
+INSERT INTO nop(numero_ordem, codigo, quantidade, operacao_id, maquina_id) VALUES
+("004234SA001", 111222333, 200, 1, 1),
+("002234SA001", 111222334, 300, 3, 2),
+("003234SA001", 111222333, 200, 2, 3);
+
+
+SELECT 
+    numero_ordem, 
+    quantidade, 
+    nome_operacao, 
+    nome_maquina, 
+    nome_operador
+FROM 
+    nop
+INNER JOIN 
+    operacao ON nop.operacao_id = operacao.id_operacao
+INNER JOIN 
+    maquina ON nop.maquina_id = maquina.id_maquina
+INNER JOIN
+	operadores ON nop.operador_id = operadores.id_operador
+ORDER BY numero_ordem ASC;
+
+
+SELECT * FROM OPERACAO;
+SELECT * FROM maquina;
+select * from operadores;
+
+
+-- drop schema banco_tcc_apont;
+
