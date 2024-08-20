@@ -11,16 +11,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body style="background-color: #b5b5b5; width: 100%; height: 100%;">
+    
+    <?php include 'template.php' ?>
+
+    <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff; ">APONTAMENTO</h5>
+
     <div class="container">
         <form action="index.php" method="post">
-            
-            <?php include 'template.php' ?>
-            
             <div id="apontamentoForm" class="mt-0">
-                
-                
-                    <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff; ">APONTAMENTO</h5>
-
                 <div class="row mt-4 text-center" id="primeira_parte">
                     <div class="col">
                         <label for="nop" class="form-label">Número Ordem: </label>

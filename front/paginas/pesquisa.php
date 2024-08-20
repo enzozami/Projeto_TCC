@@ -10,12 +10,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body style="background-color: #b5b5b5; width: 100%; height: 100%;">
+    
+    <?php include 'template.php';?>
+
+    <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff;">PESQUISA</h5>
+    
     <div class="container">
         <form action="index.php" method="post">
             
-            <?php include 'template.php';?>
+            
 
-            <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff;">PESQUISA</h5>
+            
 
         </form>
     </div>
