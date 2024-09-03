@@ -45,18 +45,18 @@
             <div id="apontamentoForm" class="mt-0">
                 <div class="row mt-4 text-center" id="primeira_parte">
                     <div class="col">
-                        <label for="nop" class="form-label">Número Ordem: </label>
+                        <label for="nop" class="form-label fw-bold">Número Ordem: </label>
                         <input type="text" id="nop" name="nop" class="form-control" pattern="^[0-9]{6}[A-Z]{2}[0-9]{3}$" title="Número Ordem" required value="<?=$_POST['nop'] ?? null ?>">
                         <div id="error-message-nop" style="color: red; display: none">Entrada Inválida.</div>
                     </div>
 
                     <div class="col">
-                        <label for="codigo" class="form-label">Código: </label>
+                        <label for="codigo" class="form-label fw-bold">Código: </label>
                         <input type="number" step="any" id="codigo" name="codigo" class="form-control">
                     </div>
 
                     <div class="col">
-                        <label for="quantidade" class="form-label">Quantidade: </label>
+                        <label for="quantidade" class="form-label fw-bold">Quantidade: </label>
                         <input type="number" step="any" id="quantidade" class="form-control" pattern="^[0-9]{4}$" title="Quantidade" required value="<?=$_POST['quantidade'] ?? null ?>">
                         <div id="" style="color: red; display: none;"></div>
                     </div>
@@ -65,13 +65,13 @@
 
                 <div class="row mt-5 text-center" id="segunda_parte">
                     <div class="col">
-                        <label for="operador" class="form-label">Operador: </label>
+                        <label for="operador" class="form-label fw-bold">Operador: </label>
                         <input type="number" step="any" id="operador" class="form-control" pattern="^[0-9]{2}$" title="Operador" required value="<?=$_POST['operador'] ?? null ?>">
                         <div id="error-message-operador" style="color: red; display: none"></div>
                     </div>
 
                     <div class="col">
-                        <label for="operacao" class="form-label">Operação: </label>
+                        <label for="operacao" class="form-label fw-bold">Operação: </label>
                         <select name="operacao" id="operacao" class="form-control rounded-pill" onchange="teste()" required>
                             <option value="">Selecione uma operação:</option>
                             <option value="usi">Usinagem</option>
@@ -86,7 +86,7 @@
                     </div>
 
                     <div id="maquina-div" class="col" style="display: none">
-                        <label for="maquina" class="form-label">Máquina: </label>
+                        <label for="maquina" class="form-label fw-bold">Máquina: </label>
                         <select name="maquina" id="maquina" class="form-control rounded-pill">
                             <option value="">Selecione uma máquina</option>
                             <option value="torno_l20">M-21</option>
@@ -128,8 +128,8 @@
                 // aqui vai ocorrer o codigo 
             }
 
-            /* APRENDENDO NA AULA - INSTRUÇÖES
-            $sql = "SELECT numero_ordem, codigo, quantidade, operador, operacao FROM nop INNER JOIN operador ON nop.operacao_id = operacao.id_operacao INNER JOIN operacao ON nop.operacao_id = operacao.id_operacao ";
+            /*// APRENDENDO NA AULA - INSTRUÇÖES
+            $sql = "SELECT * FROM nop WHERE numero_ordem = :numOrd OR codigo LIKE :";
             $stmt = $connection->prepare($sql);
             $stmt->execute();
     
@@ -137,7 +137,9 @@
             
             if (count($nop) == 0) {
                 echo "<div class='alert alert-danger text-center fw-bold'> Nenhum registro encontrado... </div>";
-            } */
+            } else {
+
+            }*/
         ?>
 
 

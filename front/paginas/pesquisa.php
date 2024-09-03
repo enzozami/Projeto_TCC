@@ -11,18 +11,77 @@
 </head>
 <body style="background-color: #b5b5b5; width: 100%; height: 100%;">
     
+    <?php // CONEXAO COM O BANCO DE DADOS
+        $serverName = "localhost";
+        $user = "root";
+        $password = "";
+        $dataBase = "banco_tcc_apont";
+        $connection = null;
+        
+        try {
+            $connection = new PDO("mysql:host=$serverName; dbname=$dataBase; charset=utf8", $user, $password);
+            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        } catch (PDOException $ex) {
+            $errorMsg = "Erro ao tentar realizar conexão. ERRO: " . $ex->getMessage();
+        }
+    ?>
+
     <?php include 'template.php';?>
 
     <h5 class="text-center mx-auto py-3" style="background-color: rgb(63, 0, 113); color: #fff;">PESQUISA</h5>
     
     <div class="container">
-        <form action="index.php" method="post">
+        <form action="" method="post">
+            <?php // CONFERE CONEXAO, SE O BANCO NAO CONECTAR APARECE A MENSAGEM DE ERRO E QUAL ERRO.
+                if(is_null($connection)){
+                    echo "<div class='alert alert-danger my-3 text-center fw-bold'> $errorMsg </div>";
+                    // Encerra o script php
+                    exit();
+                }
+            ?>
             
-            
+            <div class="row text-center">
+                <div class="col">    
+                	<label for="" class="form-label fw-bold text-center">Pesquise:</label>
+                    <div class="input-group mb-2">
+                        <input name="pesquisar" type="text" class="form-control rounded-end">
+                        <button type="submit" class="btn btn-success ">Pesquisar</button>
+                    </div>
+                </div>
+            </div>
 
             
 
         </form>
+
+        <?php
+            $pesquisar = filter_input(INPUT_POST, "pesquisar", FILTER_DEFAULT);
+            
+            $sql = "SELECT * FROM nop 
+                    WHERE numero_ordem = :numeroOrdem OR codigo LIKE :codigo";
+            $parametros = [
+                "numeroOrdem" => $pesquisar,
+                "codigo" => $pesquisar
+            ];
+
+            $stmt = $connection->prepare($sql);
+            $stmt->execute($parametros);
+    
+            $nop = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            if (count($nop) == 0) {
+                echo "<div class='alert alert-danger text-center fw-bold'> Nenhum registro encontrado... </div>";
+            } else {
+                foreach($nop as $numeroOrdem){
+                    echo "Número Ordem: " . $numeroOrdem['numero_ordem'] . " | ";
+                    echo "Código: " . $numeroOrdem['codigo'] . " | ";
+                    echo "Quantidade: " . $numeroOrdem['quantidade'] . "<br>";
+                }
+            }
+        ?>
+
+        
     </div>
 </body>
 </html>
