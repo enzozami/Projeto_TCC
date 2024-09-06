@@ -58,11 +58,12 @@
         <?php
             $pesquisar = filter_input(INPUT_POST, "pesquisar", FILTER_DEFAULT);
             
-            $sql = "SELECT * FROM nop 
-                    WHERE numero_ordem = :numeroOrdem OR codigo LIKE :codigo";
+            $sql = "SELECT numero_ordem, codigo, quantidade, lote, nome_operador FROM nop 
+                    INNER JOIN operadores ON nop.operador_id = operadores.id_operador 
+                    WHERE numero_ordem = :numeroOrdem OR lote LIKE :lote";
             $parametros = [
                 "numeroOrdem" => $pesquisar,
-                "codigo" => $pesquisar
+                "lote" => "%$pesquisar%"
             ];
 
             $stmt = $connection->prepare($sql);
@@ -74,13 +75,18 @@
                 echo "<div class='alert alert-danger text-center fw-bold'> Nenhum registro encontrado... </div>";
             } else {
                 foreach($nop as $numeroOrdem){
-                    echo "Número Ordem: " . $numeroOrdem['numero_ordem'] . " | ";
-                    echo "Código: " . $numeroOrdem['codigo'] . " | ";
-                    echo "Quantidade: " . $numeroOrdem['quantidade'] . "<br>";
+                    $resposta =  "Número Ordem: " . $numeroOrdem['numero_ordem'] . " | " . 
+                                    "Código: " . $numeroOrdem['codigo'] . " | " . 
+                                    "Quantidade: " . $numeroOrdem['quantidade'] . " | " . 
+                                    "Lote: " . $numeroOrdem['lote'] . " | " . 
+                                    "Operador: " . $numeroOrdem['nome_operador'] . " <br> ";
                 }
             }
         ?>
 
+        <div class="alert alert-info text-center fw-bold">
+            <?= $resposta ?>
+        </div>
         
     </div>
 </body>
